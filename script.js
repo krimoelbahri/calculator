@@ -2,15 +2,13 @@ let resultValue = 0; let dispValue=""; let firstNumber= 0;
 let secondNumber= 0; let operator=""; let equal=""; let operatorT="";
 
 let add= (a,b) => {return a+b;}
-let substract = function(a,b) {return a-b;}
+let subtract = function(a,b) {return a-b;}
 let multiply = (a, b) => {return a*b;}
-let devide = (a,b) => {return a/b}
-let screenValue = function(a) { display.innerHTML = a;}
+let divide = (a,b) => {return a/b}
 
 const calDisplay= document.getElementById('calDisplay');
-display = document.createElement("p");
-display.classList.add("display");
-calDisplay.appendChild(display);
+calDisplay.innerHTML = 'hello'
+let screenValue = function(a) { calDisplay.innerHTML = a;}
 window.addEventListener('keydown', dispGenerator);
 
 function dispGenerator(e){
@@ -90,7 +88,7 @@ let testOperator = function(){
         resultValue = +(add(firstNumber, secondNumber).toFixed(6));
         screenValue(resultValue);
     }else if(operatorT == '-'){
-        resultValue = +(substract(firstNumber,secondNumber).toFixed(6));
+        resultValue = +(subtract(firstNumber,secondNumber).toFixed(6));
         screenValue(resultValue);
     }else if(operatorT == '*'){
         resultValue = +(multiply(firstNumber,secondNumber).toFixed(6));
@@ -101,7 +99,7 @@ let testOperator = function(){
             screenValue(dispValue);
             clear();
         } else{
-            resultValue = +(devide(firstNumber,secondNumber).toFixed(6)); 
+            resultValue = +(divide(firstNumber,secondNumber).toFixed(6)); 
             screenValue(resultValue);}
     }
 }
