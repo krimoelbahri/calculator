@@ -1,119 +1,117 @@
-body{
-    font-size:x-large;
+body {
+  font-size: x-large;
 }
 #calContainer {
-    margin: 0 auto;
-    margin-top: 100px;
-    width: 280px;
-    height:400px;
-    display: grid;
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
-    border: solid black 1px;
-    background-color:rgb(48, 47, 47);
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 280px;
+  height: 400px;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  border: solid black 1px;
+  background-color: rgb(48, 47, 47);
 }
-button{
-    margin: 5px;
-    background-color:rgb(48, 47, 47);
-
+button {
+  margin: 5px;
+  background-color: rgb(48, 47, 47);
 }
-.numPad{
-    border: solid 1px;
-    border-radius: 10%;
-    font-size: larger;
-    color: white;
+.numPad {
+  border: solid 1px;
+  border-radius: 10%;
+  font-size: larger;
+  color: white;
 }
 .operator {
-    border: solid 1px;
-    border-radius: 10%;
-    font-size: larger;
-    color: white;
+  border: solid 1px;
+  border-radius: 10%;
+  font-size: larger;
+  color: white;
 }
-#calDisplay{
-    border: solid gray 1px;
-    border-radius: 5%;
-    grid-column: 1/5 ;
-    grid-row: 1/2;
-    background-color: white;
-    margin: 5px;
+#calDisplay {
+  border: solid gray 1px;
+  border-radius: 5%;
+  grid-column: 1/5;
+  grid-row: 1/2;
+  background-color: white;
+  text-align: right;
+  padding: 10px;
+  margin: 5px;
 }
-.display {
-    text-align: right;
-    padding-right: 20px;
+
+#addOperator {
+  grid-column: 4/5;
+  grid-row: 3/5;
+  border-radius: 5%;
 }
-#addOperator{
-    grid-column: 4/5;
-    grid-row: 3/5;
-    border-radius: 5%;
+#subOperator {
+  grid-column: 4/5;
+  grid-row: 2/3;
 }
-#subOperator{
-    grid-column: 4/5;
-    grid-row: 2/3;
+#multOperator {
+  grid-column: 3/4;
+  grid-row: 2/3;
 }
-#multOperator{
-    grid-column: 3/4;
-    grid-row: 2/3;
+#devOperator {
+  grid-column: 2/3;
+  grid-row: 2/3;
 }
-#devOperator{
-    grid-column:2/3 ;
-    grid-row:2/3 ;
+#equalOperator {
+  grid-column: 4/5;
+  grid-row: 5/7;
+  border-radius: 5%;
 }
-#equalOperator{
-    grid-column: 4/5 ;
-    grid-row: 5/7 ;
-    border-radius: 5%;
+#clear {
+  grid-column: 3/4;
+  grid-row: 6/7;
 }
-#clear{    
-    grid-column: 3/4;
-    grid-row:6/7 ;
+#delete {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  font-size: large;
 }
-#delete{
-    grid-column:1/2 ;
-    grid-row: 2/3;
-    font-size: large;
+#num0 {
+  grid-column: 1/2;
+  grid-row: 6/7;
 }
-#num0{
-    grid-column:1/2 ;
-    grid-row:6/7 ;
+#numPoint {
+  grid-column: 2/3;
+  grid-row: 6/7;
 }
-#numPoint{
-    grid-column: 2/3;
-    grid-row:6/7 ;
+#num1 {
+  grid-column: 1/2;
+  grid-row: 5/6;
 }
-#num1{
-    grid-column:1/2 ;
-    grid-row: 5/6;
+#num2 {
+  grid-column: 2/3;
+  grid-row: 5/6;
 }
-#num2{    
-    grid-column: 2/3;
-    grid-row: 5/6;
+#num3 {
+  grid-column: 3/4;
+  grid-row: 5/6;
 }
-#num3{
-    grid-column: 3/4;
-    grid-row: 5/6;
+#num4 {
+  grid-column: 1/2;
+  grid-row: 4/5;
 }
-#num4{
-    grid-column: 1/2;
-    grid-row: 4/5;
+#num5 {
+  grid-column: 2/3;
+  grid-row: 4/5;
 }
-#num5{
-    grid-column: 2/3;
-    grid-row: 4/5;
+#num6 {
+  grid-column: 3/4;
+  grid-row: 4/5;
 }
-#num6{
-    grid-column: 3/4;
-    grid-row: 4/5;
+#num7 {
+  grid-column: 1/2;
+  grid-row: 3/4;
 }
-#num7{
-    grid-column: 1/2;
-    grid-row: 3/4;
+#num8 {
+  grid-column: 2/3;
+  grid-row: 3/4;
 }
-#num8{
-    grid-column: 2/3;
-    grid-row: 3/4;
-}
-#num9{
-    grid-column: 3/4;
-    grid-row: 3/4;
+#num9 {
+  grid-column: 3/4;
+  grid-row: 3/4;
 }

@@ -1,17 +1,17 @@
 let resultValue = 0; let dispValue=""; let firstNumber= 0; 
 let secondNumber= 0; let operator=""; let equal=""; let operatorT="";
 
-let add= (a,b) => {return a+b;}
-let subtract = function(a,b) {return a-b;}
-let multiply = (a, b) => {return a*b;}
-let divide = (a,b) => {return a/b}
+const add= (a,b) => {return a+b;}
+const subtract = (a,b)=> {return a-b;}
+const multiply = (a, b) => {return a*b;}
+const divide = (a,b) => {return a/b}
 
 const calDisplay= document.getElementById('calDisplay');
-calDisplay.innerHTML = 'hello'
-let screenValue = function(a) { calDisplay.innerHTML = a;}
+const screenValue = function(a) { calDisplay.innerHTML = a;}
 window.addEventListener('keydown', dispGenerator);
 
 function dispGenerator(e){
+    console.log(e);
     const button= calContainer.querySelector(`button[data-key="${e.keyCode}"]`);
     if (!button){return}
     if (button.value == "+"){
