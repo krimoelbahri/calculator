@@ -1,0 +1,25 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "a simple Calculator with simple functionalities",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krimoelbahri/calculator.git"
+  },
+  "keywords": [
+    "elbahri_calculator"
+  ],
+  "author": "Elbahri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krimoelbahri/calculator/issues"
+  },
+  "homepage": "https://github.com/krimoelbahri/calculator#readme",
+  "devDependencies": {
+    "eslint": "^7.29.0"
+  }
+}
