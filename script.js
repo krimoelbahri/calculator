@@ -1,114 +1,142 @@
-let resultValue = 0; let dispValue=""; let firstNumber= 0; 
-let secondNumber= 0; let operator=""; let equal=""; let operatorT="";
+let resultValue = ""; let dispValue=""; let firstNumber= ""; let delTest="on";
+let secondNumber= ""; let operator=""; let equalTest=""; let operatorTest="";
 
-const add= (a,b) => {return a+b;}
-const subtract = (a,b)=> {return a-b;}
-const multiply = (a, b) => {return a*b;}
-const divide = (a,b) => {return a/b}
+const add= (a,b) => {return a+b;};
+const subtract = (a,b)=> {return a-b;};
+const multiply = (a, b) => {return a*b;};
+const divide = (a,b) => {return a/b;};
 
-const calDisplay= document.getElementById('calDisplay');
-const screenValue = function(a) { calDisplay.innerHTML = a;}
-window.addEventListener('keydown', dispGenerator);
+const calDisplay= document.getElementById("calDisplay");
+const calContainer= document.getElementById("calContainer");
+const screenValue = function(a) { calDisplay.innerHTML = a;};
+const toggleEvent = function(e){
+	if(e.type === "click"){
+		let buttonVal= e.target.value;
+		dispGenerator(buttonVal);
+	}
+	if(e.type === "keydown"){
+		const button= calContainer.querySelector(`button[data-key="${e.keyCode}"]`);
+		if (!button){return;}
+		let buttonVal= button.value;
+		dispGenerator(buttonVal);
+	}
+};
+const dispGenerator= function(buttonVal){
 
-function dispGenerator(e){
-    console.log(e);
-    const button= calContainer.querySelector(`button[data-key="${e.keyCode}"]`);
-    if (!button){return}
-    if (button.value == "+"){
-        operator=button.value;
-        testNumber();
-    }else if(button.value == "-"){
-        operator=button.value;
-        testNumber();   
-    }else if (button.value == "*"){
-        operator=button.value;
-        testNumber();   
-    }else if (button.value == "/"){
-        operator=button.value;
-        testNumber();   
-    }else if (button.value == "="){
-        equal = button.value;
-        testNumber();
-    }else if (button.value == "c"){
-        clear();
-        screenValue(dispValue);
-    }else if (button.value == "d"){
-        del();
-    }else if (button.value == "."){
-        if(dispValue.includes('.')){
-            dispValue=dispValue;
-        }else if (dispValue ==""){
-            dispValue='0.';
-            screenValue(dispValue);
-        }else{
-            dispValue+= button.value;
-            screenValue(dispValue);
-        }
-    }else {
-        if(dispValue.length > 12){
-            dispValue=dispValue;
-        }else{
-        dispValue += button.value;
-        }
-        screenValue(dispValue);
-    }
-}
-let testNumber = function(){
-    if (firstNumber == 0 && secondNumber == 0){
-        if(equal=='='){
-            dispValue=dispValue;
-            equal="";
-        }else{
-            firstNumber= Number(dispValue);
-            operatorT=operator;
-            dispValue="";
-            screenValue(dispValue);
-        }
-    }else if (firstNumber != 0 && secondNumber == 0){
-        secondNumber=Number(dispValue);
-        testOperator();
-        operatorT = operator;
-        dispValue="";
-            if(equal == "="){
-                clear();
-            }
-    }else if (firstNumber!= 0 && secondNumber != 0){
-        firstNumber = resultValue;
-        secondNumber =Number (dispValue);
-        testOperator();
-        operatorT = operator;
-        dispValue="";
-            if(equal == "="){
-                clear();
-            }
-    }
-}
-let testOperator = function(){
-    if(operatorT == '+'){
-        resultValue = +(add(firstNumber, secondNumber).toFixed(6));
-        screenValue(resultValue);
-    }else if(operatorT == '-'){
-        resultValue = +(subtract(firstNumber,secondNumber).toFixed(6));
-        screenValue(resultValue);
-    }else if(operatorT == '*'){
-        resultValue = +(multiply(firstNumber,secondNumber).toFixed(6));
-        screenValue(resultValue);
-    }else if(operatorT == '/'){
-        if (secondNumber == 0){
-            dispValue= "ERROR"
-            screenValue(dispValue);
-            clear();
-        } else{
-            resultValue = +(divide(firstNumber,secondNumber).toFixed(6)); 
-            screenValue(resultValue);}
-    }
-}
-let clear = function(){
-    resultValue = 0; dispValue=""; firstNumber= 0; 
-    secondNumber= 0; operator=""; equal=""; operatorT="";
-}
-let del = function(){
-    dispValue= dispValue.slice(0, (dispValue.length -1));
-    screenValue(dispValue)
-}
+	if (buttonVal === "+" || buttonVal === "-" || buttonVal === "*" 
+    || buttonVal === "/" || buttonVal === "="){
+		operator = buttonVal;
+		equalTest= buttonVal;
+		delTest= "off";
+		testNumber();
+		return;
+	}
+	if (buttonVal === "d"){
+		del();
+		return;
+	}
+	if (buttonVal === "c"){
+		clear();
+		screenValue("0");
+		return;
+	}
+	if (buttonVal == "."){
+		dispDecimal();
+		return;
+	}	
+	if(dispValue.length > 14){
+		return;
+	}else{
+		delTest="on";
+		dispValue += buttonVal;
+		screenValue(dispValue);
+	}
+};
+
+const testNumber = function(){
+	if (firstNumber == "" && secondNumber == ""){
+		if(equalTest === "="){
+			equalTest="";
+		}else{
+			firstNumber= Number(dispValue);
+			operatorTest=operator;
+			dispValue="";
+			screenValue(firstNumber);
+		}
+		return;
+	}
+	if (firstNumber != "" && secondNumber == ""){
+		secondNumber=Number(dispValue);
+		testOperator();
+		operatorTest = operator;
+		dispValue="";
+		if(equalTest == "="){
+			clear();
+		}
+		return;
+	}
+	if (firstNumber!= "" && secondNumber != ""){
+		firstNumber = resultValue;
+		secondNumber =Number (dispValue);
+		testOperator();
+		operatorTest = operator;
+		dispValue="";
+		if(equalTest == "="){
+			clear();
+		}
+	}
+};
+
+const testOperator = function(){
+	if(operatorTest == "+"){
+		resultValue = +(add(firstNumber, secondNumber).toFixed(6));
+		screenValue(resultValue);
+	}
+	if(operatorTest == "-"){
+		resultValue = +(subtract(firstNumber,secondNumber).toFixed(6));
+		screenValue(resultValue);
+	}
+	if(operatorTest == "*"){
+		resultValue = +(multiply(firstNumber,secondNumber).toFixed(6));
+		screenValue(resultValue);
+	}
+	if(operatorTest == "/"){
+		if (secondNumber == 0){
+			dispValue= "ERROR";
+			screenValue(dispValue);
+			clear();
+		} else{
+			resultValue = +(divide(firstNumber,secondNumber).toFixed(6)); 
+			screenValue(resultValue);}
+	}
+};
+const clear = function(){
+	resultValue = ""; dispValue=""; firstNumber= ""; 
+	secondNumber= ""; operator=""; equalTest=""; operatorTest="";
+};
+const del = function(){
+	if(delTest==="on"){
+		dispValue= dispValue.slice(0, (dispValue.length -1));
+		screenValue(dispValue);
+	}
+	if((dispValue.length) === 0){
+		screenValue("0");
+	}
+};
+const dispDecimal= function(){
+	if(dispValue.includes(".")){
+		return;
+	}
+	if(dispValue ===""){
+		dispValue += "0.";
+		screenValue(dispValue);
+
+	}else{
+		dispValue += ".";
+		screenValue(dispValue);
+	}
+};
+document.querySelectorAll("button").forEach((elm)=>{elm.addEventListener("click",toggleEvent);});
+window.addEventListener("keydown", toggleEvent);
+
 
