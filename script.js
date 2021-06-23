@@ -47,6 +47,7 @@ const dispGenerator= function(buttonVal){
 	if(dispValue.length > 14){
 		return;
 	}else{
+		if(dispValue === "" && buttonVal==="0"){return;}
 		delTest="on";
 		dispValue += buttonVal;
 		screenValue(dispValue);
@@ -54,7 +55,7 @@ const dispGenerator= function(buttonVal){
 };
 
 const testNumber = function(){
-	if (firstNumber == "" && secondNumber == ""){
+	if (firstNumber === "" && secondNumber === ""){
 		if(equalTest === "="){
 			equalTest="";
 		}else{
@@ -65,7 +66,7 @@ const testNumber = function(){
 		}
 		return;
 	}
-	if (firstNumber != "" && secondNumber == ""){
+	if (firstNumber !== "" && secondNumber == ""){
 		secondNumber=Number(dispValue);
 		testOperator();
 		operatorTest = operator;
@@ -75,7 +76,7 @@ const testNumber = function(){
 		}
 		return;
 	}
-	if (firstNumber!= "" && secondNumber != ""){
+	if (firstNumber!== "" && secondNumber !== ""){
 		firstNumber = resultValue;
 		secondNumber =Number (dispValue);
 		testOperator();
@@ -89,15 +90,15 @@ const testNumber = function(){
 
 const testOperator = function(){
 	if(operatorTest == "+"){
-		resultValue = +(add(firstNumber, secondNumber).toFixed(6));
+		resultValue = add(firstNumber, secondNumber);
 		screenValue(resultValue);
 	}
 	if(operatorTest == "-"){
-		resultValue = +(subtract(firstNumber,secondNumber).toFixed(6));
+		resultValue = subtract(firstNumber,secondNumber);
 		screenValue(resultValue);
 	}
 	if(operatorTest == "*"){
-		resultValue = +(multiply(firstNumber,secondNumber).toFixed(6));
+		resultValue = multiply(firstNumber,secondNumber);
 		screenValue(resultValue);
 	}
 	if(operatorTest == "/"){
@@ -106,7 +107,7 @@ const testOperator = function(){
 			screenValue(dispValue);
 			clear();
 		} else{
-			resultValue = +(divide(firstNumber,secondNumber).toFixed(6)); 
+			resultValue = divide(firstNumber,secondNumber); 
 			screenValue(resultValue);}
 	}
 };
